@@ -39,7 +39,7 @@ $sceneArgument = if ([IO.Path]::IsPathRooted($ScenePath)) {
   $ScenePath.Replace("\", "/")
 }
 $unityExecutable = (Resolve-Path -LiteralPath $UnityPath).Path
-$toolCommit = "1785437e467c85ae0ad577d10390145fc061f5a9"
+$toolCommit = "39fb5d7f0a50ef320ea8cec52c002048a0199885"
 $toolRepository = "https://github.com/sato-toma/cck-scenegraph-tools.git"
 $toolRoot = Join-Path $projectRoot "Library\cck-scenegraph-tools"
 $analyzerRoot = Join-Path $toolRoot "packages\ts-analyzer"
