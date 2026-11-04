@@ -38,6 +38,16 @@ PowerShellから実行します。対象シーンは既定で `Assets/room.unity
 
 解析はSceneGraphとスクリプトを使った静的な確認です。UnityやCluster上での実行時動作を保証するものではなく、`unverified` や `ambiguous` などの結果は手動確認が必要です。
 
+## Unity MCP（任意）
+
+Unity EditorをMCP経由で操作するため、プロジェクトルートの `.mcp.json` からUnity CLIのMCPサーバーへ接続できます。Unity CLI 1.0.0-beta.15とUnity Pipeline 0.8.0-exp.1を使い、Unity 6000.2.6f2で接続を確認しています。Unity Editorが起動しPipelineサーバーが利用可能な間、VS CodeのMCPサーバー一覧から `unity` を信頼して接続してください。
+
+```powershell
+unity pipeline editors --json
+```
+
+このMCP連携はUnity Editorとの対話用です。静的解析はMCPサーバーに依存せず、上記のExporterが生成する `SceneGraph.generated.toml` を入力として実行します。
+
 ## Spinサンプル
 
 `Assets/Project/Script/src/` にSpinStart、SpinStop、PlayerScriptのTypeScriptソースがあります。Node.js 26.xを使い、リポジトリルートで依存関係を復元してClusterScript用JavaScriptを生成します。ClusterScriptの型定義はビルド時に公式ドキュメントから `node_modules/@types/cluster-script/` へ取得するため、`Assets`にもGit管理対象にも含まれず、Unityの`.meta`も生成されません。取得にはネットワーク接続が必要です。
