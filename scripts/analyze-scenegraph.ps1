@@ -1,7 +1,6 @@
 [CmdletBinding()]
 param(
-  [Parameter(Mandatory = $true)]
-  [string]$ScenePath,
+  [string]$ScenePath = "Assets/room.unity",
   [string]$UnityPath = $env:UNITY_PATH,
   [switch]$StrictOptionalLookups
 )

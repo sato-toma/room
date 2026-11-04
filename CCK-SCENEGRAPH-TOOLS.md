@@ -19,11 +19,10 @@ Unity Exporterは `Packages/manifest.json` から導入されます。解析器�
 
 ### 実行
 
-PowerShellから対象シーンとUnity Editorの実行ファイルを指定します。
+PowerShellから実行します。対象シーンは既定で `Assets/room.unity` です。別のシーンを解析する場合は `-ScenePath` で指定します。
 
 ```powershell
 .\scripts\analyze-scenegraph.ps1 `
-  -ScenePath "Assets\room.unity" `
   -UnityPath "C:\Program Files\Unity\Hub\Editor\6000.2.6f2\Editor\Unity.exe"
 ```
 
@@ -31,7 +30,6 @@ PowerShellから対象シーンとUnity Editorの実行ファイルを指定し�
 
 ```powershell
 .\scripts\analyze-scenegraph.ps1 `
-  -ScenePath "Assets\room.unity" `
   -UnityPath "C:\Program Files\Unity\Hub\Editor\6000.2.6f2\Editor\Unity.exe" `
   -StrictOptionalLookups
 ```
@@ -39,3 +37,16 @@ PowerShellから対象シーンとUnity Editorの実行ファイルを指定し�
 `SceneGraph.generated.toml` は生成物としてGit管理対象外です。Unityのexportが失敗した場合は `Library/SceneGraphExporter.log` を確認してください。
 
 解析はSceneGraphとスクリプトを使った静的な確認です。UnityやCluster上での実行時動作を保証するものではなく、`unverified` や `ambiguous` などの結果は手動確認が必要です。
+
+## Spinサンプル
+
+`Assets/Project/Script/src/` にSpinStart、SpinStop、PlayerScriptのTypeScriptソースがあります。Node.js 26.xを使い、リポジトリルートで依存関係を復元してClusterScript用JavaScriptを生成します。ClusterScriptの型定義はビルド時に公式ドキュメントから `node_modules/@types/cluster-script/` へ取得するため、`Assets`にもGit管理対象にも含まれず、Unityの`.meta`も生成されません。取得にはネットワーク接続が必要です。
+
+```powershell
+npm ci
+npm run build:clusterscripts
+```
+
+生成先は `Assets/Project/Script/dist/` です。生成JavaScriptはGit管理対象外ですが、Unityの`.meta`ファイルは管理します。生成したJavaScriptは `Assets/room.unity` のSpinStart/SpinStopオブジェクトに割り当て済みです。ソースを変更した場合は解析やUnityでの確認の前に再ビルドしてください。シーンには移動用の床とSpawn Pointも含まれます。
+
+SpinStartには `MovableItem` も設定しています。PlayerScriptの `setPosition`／`setRotation` を現行解析器がアイテム移動APIとして検査するためです。参照元サンプルの構成にはない、静的解析を満たすための追加コンポーネントです。

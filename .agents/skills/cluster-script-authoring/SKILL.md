@@ -27,14 +27,10 @@ Cluster Creator Kit で ClusterScript を書き、Unity シーンに配置する
 ## 公式情報
 
 - ClusterScript API 定義: https://docs.cluster.mu/script/interfaces/ClusterScript.html
-- 型定義ファイル: https://docs.cluster.mu/script/index.d.ts（プロジェクトの `Assets/Script/external/index.d.ts` に保存する）
+- 型定義ファイル: https://docs.cluster.mu/script/index.d.ts（Unity 管理外の場所に保存し、`.meta`を生成しない）
 - Item Component の仕様: https://docs.cluster.mu/creatorkit/item-components/
 
-型定義を更新するには、次のように取得する。
-
-```bash
-curl -L -o Assets/Script/external/index.d.ts https://docs.cluster.mu/script/index.d.ts
-```
+TypeScript で型チェックする場合、公式型定義は `node_modules/@types/cluster-script/index.d.ts` など `Assets` の外に取得し、`typeRoots` を設定する。プロジェクトに取得・更新スクリプトがある場合はそれを使い、型定義を Unity の `Assets` に置かない。
 
 ## 検証
 

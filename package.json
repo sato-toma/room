@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "scripts": {
+    "fetch:cluster-script-api": "node scripts/fetch-cluster-script-api.cjs",
+    "build:clusterscripts": "npm run fetch:cluster-script-api && tsc --project Assets/Project/Script/tsconfig.json && node scripts/minify-clusterscripts.cjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  }
+}
