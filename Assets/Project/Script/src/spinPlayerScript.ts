@@ -1,12 +1,14 @@
-// const moveSpeed = 2.5;
-const moveSpeed = 10;
+const horizontalMoveSpeed = 1;
+const verticalMoveSpeed = 1;
 const spinSpeed = 360;
+const defaultGravity = -9.81;
 let moveDirection = new Vector3(0, 0, 1);
 let elapsed = 0;
 let isRolling = true;
 
 _.setMoveSpeedRate(0);
 _.setJumpSpeedRate(0);
+_.setGravity(0);
 
 _.onReceive(
   (messageType, arg) => {
@@ -25,6 +27,7 @@ _.onReceive(
     isRolling = false;
     _.setMoveSpeedRate(1);
     _.setJumpSpeedRate(1);
+    _.setGravity(defaultGravity);
   },
   { player: false, item: true },
 );
@@ -39,15 +42,16 @@ _.onFrame((deltaTime) => {
     isRolling = false;
     _.setMoveSpeedRate(1);
     _.setJumpSpeedRate(1);
+    _.setGravity(defaultGravity);
     _.log("Spin movement stopped because the player position is unavailable.");
     return;
   }
 
   _.setPosition(
     new Vector3(
-      position.x + moveDirection.x * moveSpeed * deltaTime,
-      position.y + moveDirection.y * moveSpeed * deltaTime,
-      position.z + moveDirection.z * moveSpeed * deltaTime,
+      position.x + moveDirection.x * horizontalMoveSpeed * deltaTime,
+      position.y + moveDirection.y * verticalMoveSpeed * deltaTime,
+      position.z + moveDirection.z * horizontalMoveSpeed * deltaTime,
     ),
   );
 
