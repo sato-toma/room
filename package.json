@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "fetch:bgm": "node scripts/fetch-bgm.cjs",
     "fetch:cluster-script-api": "node scripts/fetch-cluster-script-api.cjs",
     "build:clusterscripts": "npm run fetch:cluster-script-api && tsc --project Assets/Project/Script/tsconfig.json && node scripts/minify-clusterscripts.cjs"
   },

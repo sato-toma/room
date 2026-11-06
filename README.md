@@ -85,3 +85,7 @@ Cluster Creator KitサンプルプロジェクトのMinimal Sampleと同じも�
 
 本プロジェクトは [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) で提供されています。
 本プロジェクトの全部もしくは一部を使用して作成されたコンテンツを [cluster](https://cluster.mu/) で公開する場合は Cluster, Inc. のクレジット表示は不要です。
+
+### 個別アセット: BGM
+
+`https://bgmer.net/wp-content/uploads/2023/06/373_BPM125.mp3` のBGMは、本プロジェクトのライセンス対象外です。`npm run fetch:bgm` で `Assets/Project/BGM/373_BPM125.mp3` に取得できます。この音源およびUnityが生成するメタデータはGit管理されず、再配布しないでください。利用にあたっては配布元の利用条件も確認してください。
