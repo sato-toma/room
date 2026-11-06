@@ -8,7 +8,7 @@
 
 環境に応じて以下の追加モジュールが必要です。
 
-#### Windows の場合 
+#### Windows の場合
 - Android Build Support
 - iOS Build Support
 - Mac Build Support (Mono)
@@ -21,6 +21,14 @@
 ### Cluster Creator Kit v3.0.0 以上
 プロジェクトに自動で導入されます。
 起動時にエラーが出る場合や Unity のメニューに「Cluster」の項目が追加されていない場合は [Creator Kitの導入](https://clustervr.gitbook.io/creatorkit/installation/install-creatorkit) を参考に Creator Kit の手動での導入をお試しください。
+
+## Blender MCP
+
+ワークスペースのMCP設定から、Node.js製MCPサーバー経由でBlenderの基本形状を作成し、`.blend`と`.fbx`を書き出せます。Node.jsとBlenderが必要です。BlenderのPython APIはBlender同梱のPythonで実行するため、別途Pythonを導入する必要はありません。
+
+依存関係を復元する場合は、このフォルダーで `npm ci` を実行してください。Blenderが標準のインストール場所にない場合は、`BLENDER_EXECUTABLE` に実行ファイルのパスを設定してください。出力先は `Assets/Generated/Blender` で、変更する場合は `BLENDER_MCP_OUTPUT_DIR` を設定します。
+
+`create_fbx` ツールは、立方体・球・正二十面体球・円柱・円錐・トーラス・平面を作成できます。各オブジェクトに位置、回転、スケール、基本色、メタリック、粗さを指定できます。同名の出力ファイルは上書きしません。
 
 ## テンプレートの一覧
 
@@ -85,6 +93,8 @@ Cluster Creator KitサンプルプロジェクトのMinimal Sampleと同じも�
 
 本プロジェクトは [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/) で提供されています。
 本プロジェクトの全部もしくは一部を使用して作成されたコンテンツを [cluster](https://cluster.mu/) で公開する場合は Cluster, Inc. のクレジット表示は不要です。
+
+-------------------------
 
 ### 個別アセット: BGM
 
