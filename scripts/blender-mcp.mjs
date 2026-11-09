@@ -28,6 +28,9 @@ def main():
         spec = json.load(spec_file)
 
     bpy.ops.wm.read_factory_settings(use_empty=True)
+    scene = bpy.context.scene
+    scene.unit_settings.system = "METRIC"
+    scene.unit_settings.scale_length = 1.0
     created_objects = []
     for item in spec["objects"]:
         shape = item["shape"]
@@ -70,6 +73,7 @@ def main():
     for obj in created_objects:
         obj.select_set(True)
     bpy.context.view_layer.objects.active = created_objects[0]
+    bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
 
     if "FINISHED" not in bpy.ops.wm.save_as_mainfile(filepath=blend_path):
         raise RuntimeError("Blender did not finish saving the .blend file")
@@ -77,11 +81,15 @@ def main():
         filepath=fbx_path,
         use_selection=True,
         object_types={"MESH"},
-        apply_scale_options="FBX_SCALE_ALL",
+        apply_unit_scale=True,
+        apply_scale_options="FBX_SCALE_UNITS",
+        use_space_transform=True,
+        bake_space_transform=True,
         axis_forward="-Z",
         axis_up="Y",
         bake_anim=False,
-        path_mode="AUTO",
+        path_mode="COPY",
+        embed_textures=True,
     ):
         raise RuntimeError("Blender did not finish exporting the FBX file")
 

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "skills": {
+    "blender-modeling": {
+      "source": "sato-toma/blender-modeling-tools",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/blender-modeling/SKILL.md",
+      "computedHash": "3b46037a6b17934a3396d057b81fa9d143a7d30ffc50a533bdf4eae39778a0e7",
+      "installMode": "copy"
+    }
+  }
+}

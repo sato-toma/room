@@ -24,6 +24,10 @@
 /Assets/Temp.meta
 /Assets/Project/BGM/*.mp3
 
+# Blender versioned backups are temporary; keep generated .blend and .fbx assets.
+*.blend[0-9]*
+*.blend[0-9]*.meta
+
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
 

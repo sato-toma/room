@@ -30,6 +30,8 @@
 
 `create_fbx` ツールは、立方体・球・正二十面体球・円柱・円錐・トーラス・平面を作成できます。各オブジェクトに位置、回転、スケール、基本色、メタリック、粗さを指定できます。同名の出力ファイルは上書きしません。
 
+FBX出力は[Cluster公式のBlender→Unity設定](https://creator.cluster.mu/2022/07/26/blender-unity/)を参考にし、Metric単位、回転・スケールの適用、FBX Unit Scale、Forward `-Z` / Up `Y`、Apply Transform、テクスチャのCopy/Embedを設定しています。現在のツールは画像Textureを入力できないため、Textureの埋め込みは未検証です。設定と制約の詳細は[Blender Skill](.agents/skills/blender-modeling/SKILL.md)を参照してください。
+
 ## テンプレートの一覧
 
 ### ミュージック
