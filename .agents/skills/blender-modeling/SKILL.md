@@ -15,7 +15,7 @@ Blenderで3Dアセットを作成・編集・確認する作業を支援する�
 ## 手順
 
 1. 利用中のBlenderバージョン、現在のScene、選択Object、既存ファイルの状態を確認する。
-2. 要件から形状・寸法・原点・座標系・見た目・出力形式を整理する。不明な仕様は推測で確定しない。Unity向けでは[Cluster公式のBlender→Unity設定](./references/room-blender-mcp.md)を基準にする。
+2. 要件から形状・寸法・原点・座標系・見た目・出力形式を整理する。不明な仕様は推測で確定しない。Cluster向けアセットでは、隣接する[`cluster-world-development`](../cluster-world-development/SKILL.md)のワークフローも適用する。Unity向けでは[Cluster公式のBlender→Unity設定](./references/room-blender-mcp.md)を基準にする。
 3. [MCP操作ガイド](./references/mcp-operations.md)に従い、現在の環境で利用可能なツールと引数を確認する。roomの`create_fbx`を使う場合は[room Blender MCP仕様](./references/room-blender-mcp.md)を適用する。
 4. 変更対象を限定して作業する。既存アセットの上書き・削除や大きな変更は、必要ならユーザーの承認を得る。
 5. [作成ワークフロー](./references/authoring-workflow.md)を参考に、必要な範囲でメッシュ、変換、Material、UVなどを整える。
